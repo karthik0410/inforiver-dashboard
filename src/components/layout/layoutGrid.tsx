@@ -4,7 +4,7 @@ import '../assets/css/layoutGrid.css';
 import 'react-grid-layout/css/styles.css';
 import { useGrid } from '../context/Context';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGridItems, updateGridItemSize, updateGridItems } from '../../store/gridSlice';
+import { setGridItems, updateGridItemSize, updateGridItems } from '../../store/undoRedoObject';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -52,7 +52,7 @@ const LayoutGrid: React.FC<GridComponentProps> = ({
   const [gridItemSizes, setGridItemSizes] = useState<{ [key: string]: { width: number; height: number } }>({});
   const dispatch = useDispatch();
   const gridItems = useSelector((state:any) => state.grid.gridSlice);
- console.log("allgrid", gridItems)
+
   const templateHeight = height / 150;
   const templateWidth = Math.floor(width / 101);
 

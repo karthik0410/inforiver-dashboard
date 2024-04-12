@@ -4,7 +4,7 @@ import { useTheme } from "../Theme/Theme";
 import { getIcon } from "../constant/Helper";
 import { useGrid } from '.././context/Context.js'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { undo, redo, setGridItems } from '../../store/gridSlice.js';
+import { undo, redo, setGridItems } from '../../store/undoRedoObject.js';
 
 const CustomToolbar = () => {
   const { theme, setTheme } = useTheme(); 

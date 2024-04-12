@@ -3,7 +3,7 @@ import { SketchPicker } from 'react-color';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIcon } from "../constant/Helper";
 import '../assets/css/toolbar.css';
-import { setColumns, setRows, setSpacing, setMargin, setCornerRadius, setStroke, setShadow, setStrokeColor, setShadowColor, setSelectedShadow } from "../../store/ToolbarSlice";
+import { setColumns, setRows, setSpacing, setMargin, setCornerRadius, setStroke, setShadow, setStrokeColor, setShadowColor, setSelectedShadow } from "../../store/gridSetting";
 import { ELayouts } from "../../MainComponent";
 
 

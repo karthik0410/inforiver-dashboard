@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ToolbarState {
+interface GridSettings {
   rows: number;
   columns: number;
   spacing: number;
@@ -11,13 +11,10 @@ interface ToolbarState {
   strokeColor: string;
   shadowColor: string;
   selectedShadow: string;
-  pastStates: ToolbarState[];
-  futureStates: ToolbarState[];
-  undoCount: number;
-  redoCount: number;
+  
 }
 
-const initialState: ToolbarState = {
+const initialState: GridSettings = {
   rows: 3,
   columns: 3,
   spacing: 3,
@@ -28,10 +25,7 @@ const initialState: ToolbarState = {
   strokeColor: 'black',
   shadowColor: 'black',
   selectedShadow: '',
-  pastStates: [],
-  futureStates: [],
-  undoCount: 0,
-  redoCount: 0,
+  
 };
 
 const toolbarSlice = createSlice({
@@ -68,32 +62,7 @@ const toolbarSlice = createSlice({
     setSelectedShadow: (state, action: PayloadAction<string>) => {
       state.selectedShadow = action.payload;
     },
-    // saveState: (state) => {
-    //   state.pastStates.push({ ...state });
-    // },
-    // undo: (state) => {
-    //   if (state.pastStates.length > 0) {
-    //     const lastState = state.pastStates.pop();
-    //     if (lastState) {
-    //       state.futureStates.push({ ...state });
-    //       Object.assign(state, lastState);
-    //       state.undoCount++;
-    //       state.redoCount--;
-    //     }
-    //   }
-    // },
-    // redo: (state) => {
-    //   if (state.futureStates.length > 0) {
-    //     const nextState = state.futureStates.pop();
-    //     if (nextState) {
-    //       state.pastStates.push({ ...state });
-    //       Object.assign(state, nextState);
-    //       state.undoCount--;
-    //       state.redoCount++;
-    //     }
-    //   }
-    // },
-  },
+      },
 });
 
 export const {
@@ -107,9 +76,7 @@ export const {
   setStrokeColor,
   setShadowColor,
   setSelectedShadow,
-  // saveState,
-  // undo,
-  // redo,
+ 
 } = toolbarSlice.actions;
 
 export default toolbarSlice.reducer;

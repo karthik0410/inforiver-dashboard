@@ -1,9 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import chartSlicer from "./chartSlicer";
-import toolbarSlice from "./ToolbarSlice";
+import toolbarSlice from "./gridSetting";
 import titleSlice from "./titleSlice";
 import themeStore from "./ThemeIndicator";
-import gridSlice from "./gridSlice";
+import gridSlice from "./undoRedoObject";
 const rootReducer = combineReducers({
   chartStore: chartSlicer,
   toolbar: toolbarSlice,
