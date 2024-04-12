@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 import SubPanel from "./components/SubPanel/SubPanel";
-import Title from "./components/pageTitle/title"; 
+import Title from "./components/pageTitle/title";
 import InforiverLogo from "./components/pageTitle/InforiverLogo";
 import SidePanel from "./components/sidePanel/SidePanel";
 import TemplateWrapper from "./TemplateBuilder/TemplateWrapper";
 import Toolbar from "./components/layout/toolbar";
-
 
 export enum ELayouts {
   CHART = "CHART",
@@ -23,36 +22,38 @@ const MainComp = () => {
 
   const toggleToPreview = (payload: ELayouts) => {
     setShowSubPanelElements(payload === showSubPanelElements ? null : payload);
-   
   };
 
- const toolPreview  = (payload: ELayouts) =>{
-  setShowToolbar(payload === showToolbar ? null : payload)
- }
+  const toolPreview = (payload: ELayouts) => {
+    setShowToolbar(payload === showToolbar ? null : payload);
+  };
 
   return (
     <div className="App">
       <InforiverLogo />
-      <Title title={showSubPanelElements === ELayouts.LAYOUT ? "Layout" : "Insert element"} /> 
+      <Title
+        title={
+          showSubPanelElements === ELayouts.LAYOUT ? "Layout" : "Insert element"
+        }
+      />
       <div className="main-content">
         <SidePanel
           toggleToPreview={toggleToPreview}
           showSubPanelElements={showSubPanelElements}
-          
         />
-       {showSubPanelElements===ELayouts.LAYOUT&&(
-        <Toolbar 
-        toolpreview={toolPreview}
-        showSubPanelElements={showSubPanelElements}
-       
-        />
-       )}
+        {showSubPanelElements === ELayouts.LAYOUT && (
+          <Toolbar
+            toolpreview={toolPreview}
+            showSubPanelElements={showSubPanelElements}
+          />
+        )}
         {showSubPanelElements === ELayouts.CHART && (
           <SubPanel
             toggleToPreview={toggleToPreview}
             showSubPanelElements={showSubPanelElements}
           />
         )}
+
         <TemplateWrapper />
       </div>
     </div>

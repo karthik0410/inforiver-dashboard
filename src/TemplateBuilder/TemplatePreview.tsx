@@ -1,29 +1,16 @@
-import LineChart from "../chartComponents/LineChart";
-import ClusterLineChart from "../chartComponents/ClusttereLine";
-import { dataSets, lineData } from "../components/dataSets/ChartDatas";
-import BarChart from "../chartComponents/Bar";
-import StackedBarChart from "../chartComponents/StackedBarChart";
-import AreaChart from "../chartComponents/AreaChart";
-// import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import StackedLineChart from "../chartComponents/StackedLineChart";
-import useChartStore from "..//store/zustand/Zustand";
-import WaterfallChart from "../chartComponents/WaterfallChart";
-import ClusteredBarChart from "../chartComponents/ClusterBarChart";
 import { useSelector } from "react-redux";
-import lightTheme from "../components/Theme/lightTheme";
-import darkTheme from "../components/Theme/darkTheme";
 import LayoutGrid from "../components/layout/layoutGrid";
 
-const componentIds: Record<string, React.FC<any>> = {
-  "overlapped-column": BarChart,
-  area: AreaChart,
-  line: LineChart,
-  "clustered-line": ClusterLineChart,
-  "stacked-line": StackedLineChart,
-  waterfall: WaterfallChart,
-  "100stacked-column": StackedBarChart,
-  "grouped-column": ClusteredBarChart,
-};
+// const componentIds: Record<string, React.FC<any>> = {
+//   "overlapped-column": BarChart,
+//   area: AreaChart,
+//   line: LineChart,
+//   "clustered-line": ClusterLineChart,
+//   "stacked-line": StackedLineChart,
+//   waterfall: WaterfallChart,
+//   "100stacked-column": StackedBarChart,
+//   "grouped-column": ClusteredBarChart,
+// };
 const TemplatePreview = ({
   height,
   width,
@@ -34,65 +21,62 @@ const TemplatePreview = ({
   templateRef: React.MutableRefObject<HTMLDivElement>;
 }) => {
   // const { height, width } = prop;
-  const { rows, columns, spacing, margin, strokeColor,stroke,cornerRadius,shadow,shadowColor ,selectedShadow} = useSelector((state: any) => state.toolbar);
-  const activeChart = useChartStore((state: any) => state.activeChart);
+  const {
+    rows,
+    columns,
+    spacing,
+    margin,
+    strokeColor,
+    stroke,
+    cornerRadius,
+    shadow,
+    shadowColor,
+    selectedShadow,
+  } = useSelector((state: any) => state.gridSetting);
+  // const activeChart = useChartStore((state: any) => state.activeChart);
 
-  const isChartActive = activeChart !== null;
-  const SelectedComp = componentIds[activeChart];
+  // // const isChartActive = activeChart !== null;
+  // const SelectedComp = componentIds[activeChart];
 
-  const finalData =
-    activeChart === "clustered-line" ||
-    activeChart === "stacked-line" ||
-    activeChart === "grouped-column" ||
-    activeChart === "100stacked-column"
-      ? dataSets
-      : lineData;
+  // const finalData =
+  //   activeChart === "clustered-line" ||
+  //   activeChart === "stacked-line" ||
+  //   activeChart === "grouped-column" ||
+  //   activeChart === "100stacked-column"
+  //     ? dataSets
+  //     : lineData;
 
-  const themeType = useSelector((state: any) => state.themeStore.themeType);
-  console.log(themeType);
-  
+  // const themeType = useSelector((state: any) => state.themeStore.themeType);
+  // console.log(themeType);
 
-  const getTheme = (theme: any): any => {
-    switch (theme) {
-      case "light":
-        return lightTheme;
-      case "dark":
-        return darkTheme;
-      default:
-        return lightTheme;
-    }
-  };
-  const theme = getTheme(themeType);
+  // const getTheme = (theme: any): any => {
+  //   switch (theme) {
+  //     case "light":
+  //       return lightTheme;
+  //     case "dark":
+  //       return darkTheme;
+  //     default:
+  //       return lightTheme;
+  //   }
+  // };
+  // const theme = getTheme(themeType);
 
-  
   return (
-    <div className="template-preview" >
-    {isChartActive && (
-        <svg
-          height={templateRef?.current?.clientHeight}
-          width={templateRef?.current?.clientWidth}
-          style={{ backgroundColor: theme.chart.background }}
-        >
-          {SelectedComp && (
-            <SelectedComp
-              data={finalData}
-              height={height}
-              width={width}
-              theme={theme}
-            />
-          )}
-        </svg>
-      )}
-      
-      {!isChartActive && <LayoutGrid
+    <div ref={templateRef} className="template-preview">
+      <LayoutGrid
         rows={rows}
         columns={columns}
         margin={spacing}
         containerPadding={margin}
         strokeColor={strokeColor}
         strokeWidth={stroke}
-        cornerRadius={cornerRadius} shadow={shadow} shadowColor={shadowColor} selectedShadow={selectedShadow}
-         height={height} width={width}/>}
+        cornerRadius={cornerRadius}
+        shadow={shadow}
+        shadowColor={shadowColor}
+        selectedShadow={selectedShadow}
+        height={height}
+        width={width}
+      />
     </div>
   );
 };

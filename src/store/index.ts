@@ -1,15 +1,16 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import chartSlicer from "./chartSlicer";
-import toolbarSlice from "./gridSetting";
+import GridSetting from "./gridSetting";
 import titleSlice from "./titleSlice";
 import themeStore from "./ThemeIndicator";
-import gridSlice from "./undoRedoObject";
+import selectedGrid from "./selectedGrid";
+import undoRedo from "./undoRedoObject"
+
 const rootReducer = combineReducers({
-  chartStore: chartSlicer,
-  toolbar: toolbarSlice,
-  title : titleSlice,
   themeStore: themeStore,
-  grid:gridSlice
+  gridSetting: GridSetting,
+  title: titleSlice,
+  undoRedo: undoRedo,
+  selectedGrid: selectedGrid,
 });
 
 const store = configureStore({

@@ -180,13 +180,13 @@ const SubPanel = ({
 }: {
   showSubPanelElements: ELayouts;
 }) => {
-  if (showSubPanelElements !== ELayouts.CHART || showSubPanelElements === null) return null;
+  if (showSubPanelElements !== ELayouts.CHART || showSubPanelElements === null)
+    return null;
   return (
     <div className="sub-panel" style={{ marginTop: "-77px" }}>
-
       {showSubPanelElements === "CHART" && (
         <>
-          <p className="charts-text-title">Chart</p>
+          <div className="charts-text-title">Chart</div>
           <div className="search-input">
             <i className="template-builder light-search"></i>
             <input type="text" placeholder="Search.." className="search-box" />
@@ -202,7 +202,7 @@ const SubPanel = ({
             />
           ))}
 
-          <p className="charts-text-title">Sparkline</p>
+          <div className="charts-text-title">Sparkline</div>
           {sparkLine.map((config, index) => (
             <ChartBoxHolder
               key={index}
@@ -212,7 +212,6 @@ const SubPanel = ({
             />
           ))}
         </>
-
       )}
     </div>
   );

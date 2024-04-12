@@ -29,7 +29,7 @@ const initialState: GridSettings = {
 };
 
 const toolbarSlice = createSlice({
-  name: "toolbar",
+  name: "gridSetting",
   initialState,
   reducers: {
     setRows: (state, action: PayloadAction<number>) => {

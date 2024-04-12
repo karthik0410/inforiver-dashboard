@@ -9,13 +9,11 @@ const SidePanel = ({
   toggleToPreview: (value: ELayouts) => void;
   showSubPanelElements: ELayouts;
 }) => {
- 
-  const [showInsertElementSubPanel, setShowInsertElementSubPanel] = useState(true);
- 
-  
+  const [showInsertElementSubPanel, setShowInsertElementSubPanel] =
+    useState(true);
+
   const toggleToPreviewWithToolbar = (value: ELayouts) => {
     toggleToPreview(value);
-
   };
 
   const MenuLayoutItem = ({ iconName, label, onClick }: MenuLayoutItem) => {
@@ -73,8 +71,7 @@ const SidePanel = ({
       <MenuLayoutItem
         iconName="light-layout"
         label="Layout"
-      
-       onClick= {()=>toggleToPreviewWithToolbar(ELayouts.LAYOUT)}
+        onClick={() => toggleToPreviewWithToolbar(ELayouts.LAYOUT)}
       />
       <MenuLayoutItem
         iconName="light-dropdown-bottom"
@@ -109,10 +106,6 @@ const SidePanel = ({
             label="Notes"
             onClick={() => toggleToPreviewWithToolbar(ELayouts.NOTES)}
           />
-
-         
-
-        
         </>
       )}
     </div>
