@@ -26,8 +26,8 @@ const initialState: GridState = {
   columns: 3,
 };
 
-const gridSlice = createSlice({
-  name: "grid",
+const undoRedo = createSlice({
+  name: "undoRedo",
   initialState,
   reducers: {
     setGridItems: (state, action: PayloadAction<GridItem[]>) => {
@@ -103,5 +103,5 @@ const gridSlice = createSlice({
   },
 });
 
-export const { setGridItems, updateGridItems, updateGridItemSize, undo, redo } = gridSlice.actions;
-export default gridSlice.reducer;
+export const { setGridItems, updateGridItems, updateGridItemSize, undo, redo } = undoRedo.actions;
+export default undoRedo.reducer;

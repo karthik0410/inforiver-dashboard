@@ -5,6 +5,7 @@ import 'react-grid-layout/css/styles.css';
 import { useGrid } from '../context/Context';
 import { useDispatch, useSelector } from 'react-redux';
 import { setGridItems, updateGridItemSize, updateGridItems } from '../../store/undoRedoObject';
+import { setActiveGrid, setGridItem } from '../../store/selectedGrid';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -123,6 +124,7 @@ const LayoutGrid: React.FC<GridComponentProps> = ({
         return [...prevSelected, itemId];
       }
     });
+   
   };
 
   useEffect(() => {
@@ -152,6 +154,7 @@ console.log("resize",updateGridItemSize)
       containerPadding={[containerPadding, containerPadding]}
       onResizeStop={(layout, oldItem, newItem) => {
         handleResizeStop(newItem.i, newItem.w, newItem.h);
+       
         console.log(newItem.i,newItem.w, newItem.h);
       }}
       isDraggable={false}
