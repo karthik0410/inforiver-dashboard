@@ -4,14 +4,14 @@ import DataLabel from "../components/dataValues/Datalabel";
 import YAxis from "../components/axis/yAxis";
 import XAxis from "../components/axis/xAxis";
 
-interface ClusteredChartProps {
+interface ClusteredBarChartProps {
   data: { name: string; value: number }[][];
   width: number;
   height: number;
   theme: any;
 }
 
-const ClusteredChart: React.FC<ClusteredChartProps> = ({
+const ClusteredBarChart: React.FC<ClusteredBarChartProps> = ({
   data,
   width,
   height,
@@ -91,14 +91,6 @@ const ClusteredChart: React.FC<ClusteredChartProps> = ({
       style={{ margin: "auto", display: "block" }}
     >
       <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <text
-          x={innerWidth / 2}
-          y={-margin.top / 2}
-          fontSize="18px"
-          textAnchor="middle"
-        >
-          Cluster Chart
-        </text>
         {bars.flat()}
         {yAxisElement}
         {xAxisElement}
@@ -108,4 +100,4 @@ const ClusteredChart: React.FC<ClusteredChartProps> = ({
   );
 };
 
-export default ClusteredChart;
+export default ClusteredBarChart;

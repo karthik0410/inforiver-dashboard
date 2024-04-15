@@ -41,7 +41,25 @@ const ChartGrid = (props: IChartGrid) => {
       : lineData;
 
   const themeType = useSelector((state: any) => state.themeStore.themeType);
-  console.log(themeType.theme);
+  const selectedGrid = useSelector((state: any) => state.selectedGrid);
+  // const activeGridItem = selectedGrid.find(
+  //   (item) => item.gridId === activeGrid
+  // );
+
+  const structuredData = { ...selectedGrid };
+  const matchedId = structuredData.selectedGridItem.find(
+    (item: any) => item.id === selectedGrid.activeGrid
+  );
+  const matchedItem = matchedId
+    ? {
+        pixelHeight: matchedId.pixelHeight,
+        pixelWidth: matchedId.pixelWidth,
+      }
+    : null;
+
+  console.log(matchedItem, "id");
+
+  // console.log(selectedGrid);
 
   const getTheme = (theme: any): any => {
     switch (theme) {
@@ -58,12 +76,17 @@ const ChartGrid = (props: IChartGrid) => {
 
   return (
     <svg
-      height={200}
-      width={200}
+      height={matchedItem?.pixelHeight}
+      width={matchedItem?.pixelWidth}
       style={{ backgroundColor: theme.chart.background }}
     >
       {SelectedComp && (
-        <SelectedComp data={finalData} height={200} width={200} theme={theme} />
+        <SelectedComp
+          data={finalData}
+          height={matchedItem?.pixelHeight}
+          width={matchedItem?.pixelWidth}
+          theme={theme}
+        />
       )}
     </svg>
   );
